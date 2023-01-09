@@ -1,0 +1,68 @@
+[
+ {
+   "rmAreaId": 0,
+   "RMAREA_DESCR": "Risk Matrix Overall",
+   "REC_DELETED": 0,
+   "REC_REVDBID": "BPOWS",
+   "REC_CREATOR": "STARIPS",
+   "REC_CREDATE": "12/11/2007",
+   "REC_REVISOR": "STARIPS",
+   "REC_REVDATE": "12/11/2007",
+   "REC_REPLDATE": "12/11/2007"
+ },
+ {
+   "rmAreaId": 1,
+   "RMAREA_DESCR": "Risk Matrix Header 1",
+   "REC_DELETED": 0,
+   "REC_REVDBID": "BPOWS",
+   "REC_CREATOR": "STARIPS",
+   "REC_CREDATE": "12/11/2007",
+   "REC_REVISOR": "STARIPS",
+   "REC_REVDATE": "12/11/2007",
+   "REC_REPLDATE": "12/11/2007"
+ },
+ {
+   "rmAreaId": 2,
+   "RMAREA_DESCR": "Risk Matrix Header 2",
+   "REC_DELETED": 0,
+   "REC_REVDBID": "BPOWS",
+   "REC_CREATOR": "STARIPS",
+   "REC_CREDATE": "12/11/2007",
+   "REC_REVISOR": "STARIPS",
+   "REC_REVDATE": "12/11/2007",
+   "REC_REPLDATE": "12/11/2007"
+ },
+ {
+   "rmAreaId": 3,
+   "RMAREA_DESCR": "Risk Matrix Ledger 1",
+   "REC_DELETED": 0,
+   "REC_REVDBID": "BPOWS",
+   "REC_CREATOR": "STARIPS",
+   "REC_CREDATE": "12/11/2007",
+   "REC_REVISOR": "STARIPS",
+   "REC_REVDATE": "12/11/2007",
+   "REC_REPLDATE": "12/11/2007"
+ },
+ {
+   "rmAreaId": 4,
+   "RMAREA_DESCR": "Risk Matrix Ledger 2",
+   "REC_DELETED": 0,
+   "REC_REVDBID": "BPOWS",
+   "REC_CREATOR": "STARIPS",
+   "REC_CREDATE": "12/11/2007",
+   "REC_REVISOR": "STARIPS",
+   "REC_REVDATE": "12/11/2007",
+   "REC_REPLDATE": "12/11/2007"
+ },
+ {
+   "rmAreaId": 5,
+   "RMAREA_DESCR": "Risk Matrix Values",
+   "REC_DELETED": 0,
+   "REC_REVDBID": "BPOWS",
+   "REC_CREATOR": "STARIPS",
+   "REC_CREDATE": "12/11/2007",
+   "REC_REVISOR": "STARIPS",
+   "REC_REVDATE": "12/11/2007",
+   "REC_REPLDATE": "12/11/2007"
+ }
+]
