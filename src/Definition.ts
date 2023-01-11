@@ -130,7 +130,9 @@ export interface RMData {
     rmdFontAttrib: CellAttributes,
     rmdSelFontName: string,
     rmdSelFontSize: number,
-    rmdSelFontAttrib: CellAttributes
+    rmdSelFontAttrib: CellAttributes,
+    rmDisplayValue?: string
+    rmDisplayShort?: string
 }
 
 export interface RMColCfg {

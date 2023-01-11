@@ -10,11 +10,13 @@ interface Props {
     rmData: RMData[],
     rmColCfg: RMColCfg[],
     rmConfig: RMConfig[]
+    selection: { x: number, y: number },
+    setSelectedCell?(x: number, y: number): void
 }
 
 export default function RiskMatrix(props: Props) {
     const [scale, setScale] = useState(0.068)
-    const [selectedMatrixCell, setSelectedMatrixCell] = useState<{ x: number, y: number }>({ x: 0, y: 0 })
+    const selectedMatrixCell = props.selection ?? { x: 0, y: 0 }
     const numbersArray = (max: number) => {
         let numbers: number[] = [];
         for (let i = 1; i <= max; i++) {
@@ -233,7 +235,6 @@ export default function RiskMatrix(props: Props) {
 
     useEffect(() => {
         setAreaAttribute()
-        setSelectedMatrixCell({ x: 0, y: 0 })
     }, [props.rmConfig])
 
     const colorOLEtoRGB = (ole: number) => {
@@ -299,12 +300,18 @@ export default function RiskMatrix(props: Props) {
             "inset 1px darkgray" : "none"
     }
 
+    const onCellClick = (data: RMData) => {
+        if (data.rmAreaId === MatrixAreas.rmMatrix) {
+            props.setSelectedCell && props.setSelectedCell(data.rmRow, data.rmColumn)
+        }
+    }
+
     const matrixBox = (areaId: MatrixAreas, row: number, col: number) => {
         const data = props.rmData.find(data => data.rmAreaId === areaId && data.rmRow === row && data.rmColumn === col)
         if (!data) return null;
         const isSelected = isCellSelected(areaId, row, col)
         return <Box
-            onClick={() => { areaId === MatrixAreas.rmMatrix && setSelectedMatrixCell({ x: row, y: col }) }}
+            onClick={() => onCellClick(data)}
             sx={{
                 width: "100%", height: "100%", maxWidth: "100%",
                 maxHeight: "100%",
@@ -326,7 +333,7 @@ export default function RiskMatrix(props: Props) {
                 borderBottom: cellBorderBottom(data),
             }}
         >
-            {data.rmValue?.replaceAll("%LF", "\n")}
+            {(!!data.rmDisplayValue ? data.rmDisplayValue : data.rmValue).replaceAll("%LF", "\n")}
             <br />
             {areaId === MatrixAreas.rmMatrix && isSelected && <CheckIcon />}
         </Box>
