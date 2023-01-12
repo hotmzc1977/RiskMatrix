@@ -14,6 +14,22 @@ interface Props {
     setSelectedCell?(x: number, y: number): void
 }
 
+
+export function colorOLEtoRGB(ole: number) {
+
+    if (ole < 0 || ole > 16777215) { return "#000"; }
+    // Verify ole is valid OLE.
+    let blu = Math.floor((ole / 65536) % 256).toString(16);
+    let grn = Math.floor((ole / 256) % 256).toString(16);
+    let red = Math.floor(ole % 256).toString(16);
+    // Convert the OLE to RGB decimal.
+    if (blu.length < 2) { blu = "0" + blu; }
+    if (grn.length < 2) { grn = "0" + grn; }
+    if (red.length < 2) { red = "0" + red; }
+    // Convert RGB decimal to RGB hexidecimal, add leading 0 if needed.
+    return "#" + red + grn + blu;
+}
+
 export default function RiskMatrix(props: Props) {
     const [scale, setScale] = useState(0.068)
     const selectedMatrixCell = props.selection ?? { x: 0, y: 0 }
@@ -237,20 +253,7 @@ export default function RiskMatrix(props: Props) {
         setAreaAttribute()
     }, [props.rmConfig])
 
-    const colorOLEtoRGB = (ole: number) => {
 
-        if (ole < 0 || ole > 16777215) { return "#000"; }
-        // Verify ole is valid OLE.
-        let blu = Math.floor((ole / 65536) % 256).toString(16);
-        let grn = Math.floor((ole / 256) % 256).toString(16);
-        let red = Math.floor(ole % 256).toString(16);
-        // Convert the OLE to RGB decimal.
-        if (blu.length < 2) { blu = "0" + blu; }
-        if (grn.length < 2) { grn = "0" + grn; }
-        if (red.length < 2) { red = "0" + red; }
-        // Convert RGB decimal to RGB hexidecimal, add leading 0 if needed.
-        return "#" + red + grn + blu;
-    }
 
     const isCellSelected = (areaId: MatrixAreas, row: number, col: number): boolean => {
         if (selectedMatrixCell.x <= 0 || selectedMatrixCell.y <= 0) return false;
