@@ -308,13 +308,36 @@ export default function RiskMatrix(props: Props) {
             props.setSelectedCell && props.setSelectedCell(data.rmRow, data.rmColumn)
         }
     }
-
+    const onCellKeyDown = (event: React.KeyboardEvent<HTMLDivElement>, data: RMData) => {
+        if (data.rmAreaId === MatrixAreas.rmMatrix) {
+            let { x, y } = props.selection
+            if (event.code === "ArrowUp") {
+                x = (x - 1 < 1) ? columnCountMatrix : x - 1
+            }
+            else if (event.code === "ArrowDown") {
+                x = (x + 1 > columnCountMatrix) ? 1 : x + 1
+            }
+            else if (event.code === "ArrowLeft") {
+                y = (y - 1 < 1) ? rowCountMatrix : y - 1
+            }
+            else if (event.code === "ArrowRight") {
+                y = (y + 1 > rowCountMatrix) ? 1 : y + 1
+            }
+            else {
+                return;
+            }
+            props.setSelectedCell && props.setSelectedCell(x, y)
+        }
+    }
     const matrixBox = (areaId: MatrixAreas, row: number, col: number) => {
         const data = props.rmData.find(data => data.rmAreaId === areaId && data.rmRow === row && data.rmColumn === col)
         if (!data) return null;
         const isSelected = isCellSelected(areaId, row, col)
         return <Box
             onClick={() => onCellClick(data)}
+            tabIndex={isSelected && data.rmAreaId === MatrixAreas.rmMatrix ? 0 : -1}
+            onKeyDown={(event: React.KeyboardEvent<HTMLDivElement>) => onCellKeyDown(event, data)}
+            onKeyPress={(event: React.KeyboardEvent<HTMLDivElement>) => onCellKeyDown(event, data)}
             sx={{
                 width: "100%", height: "100%", maxWidth: "100%",
                 maxHeight: "100%",
