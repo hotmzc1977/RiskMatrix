@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/RiskMatrix/static/js/main.c8c1e955.js",
+    "main.js": "/RiskMatrix/static/js/main.12435bc3.js",
     "index.html": "/RiskMatrix/index.html",
-    "main.c8c1e955.js.map": "/RiskMatrix/static/js/main.c8c1e955.js.map"
+    "main.12435bc3.js.map": "/RiskMatrix/static/js/main.12435bc3.js.map"
   },
   "entrypoints": [
-    "static/js/main.c8c1e955.js"
+    "static/js/main.12435bc3.js"
   ]
 }
