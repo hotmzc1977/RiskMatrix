@@ -13,8 +13,8 @@ function App() {
   const [rmObjectId, setRMObjectId] = useState(10195001)
   const [riskFactor, setRiskFactor] = useState(0)
   const [riskColor, setRiskColor] = useState(-1)
-  const [riskX, setRiskX] = useState(0)
-  const [riskY, setRiskY] = useState(0)
+  const [riskX, setRiskX] = useState(1)
+  const [riskY, setRiskY] = useState(1)
   const [riskShort, setRiskShort] = useState("")
   const [riskDisplay, setRiskDisplay] = useState("")
 

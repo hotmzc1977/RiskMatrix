@@ -329,15 +329,20 @@ export default function RiskMatrix(props: Props) {
             props.setSelectedCell && props.setSelectedCell(x, y)
         }
     }
+    useEffect(() => {
+        const div1 = document.getElementById(`matrix-5-${props.selection.x}-${props.selection.y}`)
+        console.log(div1)
+        div1 && div1.focus()
+    }, [])
     const matrixBox = (areaId: MatrixAreas, row: number, col: number) => {
         const data = props.rmData.find(data => data.rmAreaId === areaId && data.rmRow === row && data.rmColumn === col)
         if (!data) return null;
         const isSelected = isCellSelected(areaId, row, col)
         return <Box
+            id={`matrix-${areaId}-${row}-${col}`}
             onClick={() => onCellClick(data)}
             tabIndex={isSelected && data.rmAreaId === MatrixAreas.rmMatrix ? 0 : -1}
             onKeyDown={(event: React.KeyboardEvent<HTMLDivElement>) => onCellKeyDown(event, data)}
-            onKeyPress={(event: React.KeyboardEvent<HTMLDivElement>) => onCellKeyDown(event, data)}
             sx={{
                 width: "100%", height: "100%", maxWidth: "100%",
                 maxHeight: "100%",
@@ -345,6 +350,7 @@ export default function RiskMatrix(props: Props) {
                 // boxShadow: (isSelected && areaId === MatrixAreas.rmMatrix) ? 10 : 0,
                 WebkitBoxShadow: (isSelected && areaId === MatrixAreas.rmMatrix) ? "0 0 1px 1px inset" : "none",
                 color: colorOLEtoRGB(isSelected ? data.rmdSelForeColor : data.rmdForeColor),
+                filter: isSelected && areaId === MatrixAreas.rmMatrix ? "brightness(90%)" : "",
                 backgroundColor: colorOLEtoRGB(isSelected ? data.rmdSelBackColor : data.rmdBackColor),
                 textAlign: data.rmdAlignment === RiskColumnAlignment.rmAlignCenter ? "center" : (data.rmdAlignment === RiskColumnAlignment.rmAlignRight ? "right" : "left"),
                 fontFamily: isSelected ? data.rmdSelFontName : data.rmdFontName,
